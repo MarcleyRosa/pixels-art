@@ -19,6 +19,9 @@
     display: inline-block;
 }
 
+#makeboard {
+    
+}
 .selected {
     
 }
@@ -40,4 +43,7 @@
 }
 #cor4 {
     background-color: blue;
+}
+#corwhite {
+    background-color: white;
 }
