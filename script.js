@@ -9,6 +9,21 @@ makeButton.innerText = 'Limpar';
 const divButton = document.createElement('div');
 corpo.appendChild(divButton);
 
+function rgbColor() {
+  const red = parseInt((Math.random() * 250), 10);
+  const green = parseInt((Math.random() * 250), 10);
+  const blue = parseInt((Math.random() * 250), 10);
+  return `rgb(${red}, ${green}, ${blue})`;
+}
+
+const color2 = document.getElementById('cor2');
+const color3 = document.getElementById('cor3');
+const color4 = document.getElementById('cor4');
+
+color2.style.backgroundColor = rgbColor();
+color3.style.backgroundColor = rgbColor();
+color4.style.backgroundColor = rgbColor();
+
 function buttonDiv() {
   const allPixel = document.querySelectorAll('li');
   for (let i = 0; i < allPixel.length; i += 1) {
