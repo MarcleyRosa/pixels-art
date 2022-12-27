@@ -57,18 +57,26 @@ selectedPixel.addEventListener('click', (ev) => {
 const inputVqv = document.getElementById('board-size');
 const buttonVqv = document.getElementById('generate-board');
 
+// let inputValue = bords;
+
+function minMax(bords) {
+  if (bords < 5) return 5;
+  if (bords > 50) return 50;
+  return bords;
+}
 buttonVqv.addEventListener('click', () => {
   if (!inputVqv.value.length) {
     window.alert('Board inválido!');
   }
-  if (Number(inputVqv.value) > 0) {
-    const boardBgc = document.querySelectorAll('.pixel');
-    const pixelBoard = document.getElementById('pixel-board');
-    const bords = Number(inputVqv.value);
 
+  const boardBgc = document.querySelectorAll('.pixel');
+  const pixelBoard = document.getElementById('pixel-board');
+  const bords = Number(inputVqv.value);
+  if (Number(inputVqv.value) > 0) {
     for (let index = 0; index < boardBgc.length; index += 1) {
       pixelBoard.removeChild(boardBgc[index]);
     }
-    makeBorad(bords, bords);
+    const bod = minMax(bords);
+    makeBorad(bod, bod);
   }
 });
