@@ -31,21 +31,44 @@ function makeDivLine() {
   crSection.appendChild(newDiv);
 }
 
-for (let i = 1; i <= 5; i += 1) {
-  makeDivLine();
-  for (let index = 1; index <= 5; index += 1) {
-    makeDiv();
+function makeBorad(line, colum) {
+  for (let i = 1; i <= line; i += 1) {
+    makeDivLine();
+    for (let index = 1; index <= colum; index += 1) {
+      makeDiv();
+    }
   }
 }
+makeBorad(5, 5);
 
 const elColor = document.getElementById('color-palette');
-elColor.addEventListener('click', function(e) {
+elColor.addEventListener('click', (e) => {
   document.querySelector('.selected').classList.remove('selected');
   e.target.classList.add('selected');
 });
 
 const selectedPixel = document.querySelector('#pixel-board');
-selectedPixel.addEventListener('click', function(ev) {
-  const selectCor = window.getComputedStyle(document.querySelector('.selected')).backgroundColor
-  ev.target.style.backgroundColor = selectCor;
+selectedPixel.addEventListener('click', (ev) => {
+  const elem = ev;
+  const selectCor = window.getComputedStyle(document.querySelector('.selected')).backgroundColor;
+  elem.target.style.backgroundColor = selectCor;
+});
+
+const inputVqv = document.getElementById('board-size');
+const buttonVqv = document.getElementById('generate-board');
+
+buttonVqv.addEventListener('click', () => {
+  if (!inputVqv.value.length) {
+    window.alert('Board inválido!');
+  }
+  if (Number(inputVqv.value) > 0) {
+    const boardBgc = document.querySelectorAll('.pixel');
+    const pixelBoard = document.getElementById('pixel-board');
+    const bords = Number(inputVqv.value);
+
+    for (let index = 0; index < boardBgc.length; index += 1) {
+      pixelBoard.removeChild(boardBgc[index]);
+    }
+    makeBorad(bords, bords);
+  }
 });
